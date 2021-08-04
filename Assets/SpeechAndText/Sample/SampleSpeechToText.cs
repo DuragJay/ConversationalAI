@@ -2,10 +2,12 @@
 using UnityEngine.UI;
 using TextSpeech;
 
+using OpenAI_Unity;
+
 public class SampleSpeechToText : MonoBehaviour
 {
     public GameObject loading;
-
+    public GameObject aiGameObject;
     public Text uiText;
  
     void Start()
@@ -39,6 +41,8 @@ public class SampleSpeechToText : MonoBehaviour
     void OnResultSpeech(string _data)
     {
         uiText.text = _data;
+        var ai = aiGameObject.GetComponent<OAICharacter>();
+        
 #if UNITY_IOS
         loading.SetActive(false);
 #endif
